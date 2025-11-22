@@ -11,7 +11,6 @@ class Creature:
     def is_alive(self):
         return self.hp > 0
 
-<<<<<<< HEAD
 class FlyingCreature(Creature):
     def __init__(self, name, hp, attack_power, altitude=0):
         super().__init__(name, hp, attack_power)
@@ -23,7 +22,7 @@ class FlyingCreature(Creature):
 
     def attack(self, target):
         print(f"{self.name} dives from {self.altitude}m to strike {target.name}!")
-=======
+
 class SwimmingCreature(Creature):
     def __init__(self, name, hp, attack_power, depth=0):
         super().__init__(name, hp, attack_power)
@@ -35,5 +34,17 @@ class SwimmingCreature(Creature):
 
     def attack(self, target):
         print(f"{self.name} lunges underwater at {target.name}!")
->>>>>>> swimming_creature
         target.hp -= self.attack_power
+
+class FireCreature(Creature):
+    def __init__(self, name, hp, attack_power, fire_level=0):
+        super().__init__(name, hp, attack_power)
+        self.fire_level = fire_level
+
+    def emit_fire(self, new_fire_level):
+        self.fire_level = new_fire_level
+        print(f"{self.name}'s fire level rises to {self.fire_level}!")
+
+    def attack(self, target):
+        print(f"{self.name} scorches {target.name} with fire level {self.fire_level}!")
+        target.hp -= (self.attack_power + self.fire_level)
